@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 var platform = process.platform;
 var arch = process.arch;
 var binMap = {
@@ -7,9 +8,11 @@ var binMap = {
     'win32-x64': 'windows-amd64',
 }
 
-var myEnv = platform + '-' + arch;
-if (myEnv in binMap) {
-    fs.copyFileSync(getBinPath(myEnv), './bin/latlong-cli');
+var myEnvKey = platform + '-' + arch;
+if (myEnvKey in binMap) {
+    var myEnv = binMap[myEnvKey];
+    var dest = path.join(__dirname, '/bin/latlong-cli');
+    fs.copyFileSync(getBinPath(myEnv), dest);
     for (var key in binMap) {
         var env = binMap[key];
         fs.unlinkSync(getBinPath(env));
@@ -20,5 +23,5 @@ if (myEnv in binMap) {
 }
 
 function getBinPath(env) {
-    return './latlong-cli/dist/' + env + 'latlong-cli';
+    return path.join(__dirname, '/latlong-cli/dist/', env, 'latlong-cli');
 }
