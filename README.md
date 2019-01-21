@@ -11,6 +11,9 @@ TL;DR: It's about `2.4MB` after install.
 
 There are pre-built binary distributions of `latlong-cli` for some major platforms in the package but useless executables will be automatically deleted by `postinstall` npm script when you install `node-latlong`.
 
+## requirement
+`node >= 0.12.18`
+
 # usage
 ## as a Node.js module
 ```bash
