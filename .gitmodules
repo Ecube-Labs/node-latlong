@@ -1,0 +1,3 @@
+[submodule "latlong-cli"]
+	path = latlong-cli
+	url = https://github.com/Ecube-Labs/latlong-cli
